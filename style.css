@@ -1,0 +1,408 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap");
+
+:root {
+   --almost-white: hsl(0, 0%, 98%);
+   --medium-grey: hsl(0, 0%, 41%);
+   --almost-black: hsl(0, 0%, 8%);
+   --fnw-bold: 700;
+   --fnw-reglar: 500;
+   --transition-short: 0.2s ease-out;
+
+   /* Fluid Font */
+
+   --fluid-heading: clamp(2.5rem, calc(-1.04rem + 7.08vw), 4.63rem);
+   --fluid-subtext: clamp(0.88rem, calc(0.53rem + 0.67vw), 1.13rem);
+   --fluid-grid-space: clamp(4rem, calc(-10.29rem + 28.57vw), 8rem);
+   --fluid-padding: clamp(1rem, calc(-5.85rem + 13.04vw), 2.5rem);
+   --fluid-padding-right: clamp(0.75rem, calc(-4.15rem + 9.33vw), 4.25rem);
+   --fluid-top-space: clamp(6rem, calc(1rem + 10vw), 10rem);
+   --fluid-image-padding: clamp(1rem, calc(-11.31rem + 19.23vw), 6rem);
+   /* --fluid-image-padding: clamp(2rem, calc(-0.8rem + 5.33vw), 4rem); */
+}
+
+*,
+*::before,
+*::after {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   color: var(--medium-grey);
+   font-family: "Epilogue", sans-serif;
+   font-weight: var(--fnw-reglar);
+   font-size: 18px;
+}
+
+header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 1rem 1rem;
+}
+
+li {
+   list-style: none;
+   display: block;
+}
+
+/* ============================== Navigation Sidebar Body  ============================== */
+.navigation {
+   position: fixed;
+   inset: 0 0 0 auto;
+   padding: 1rem 1.25rem;
+
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   width: 65%;
+
+   background-color: var(--almost-white);
+
+   transform: translateX(100%);
+   transition: 0.2s 0.2s;
+}
+.navigation > * {
+   z-index: 10;
+}
+.navigation.open {
+   display: flex;
+   transform: translateX(0);
+}
+.navigation::before,
+.navigation::after {
+   content: "";
+   position: fixed;
+   top: 0;
+   right: 0;
+   display: block;
+   width: 100vw;
+   height: 100vh;
+   opacity: 0;
+   pointer-events: none;
+
+   transition: var(--transition-short);
+}
+
+.navigation.open::before {
+   background-color: rgba(0, 0, 0, 0.6);
+   transition: 0.4s 0.4s;
+   opacity: 1;
+}
+.navigation.open::after {
+   opacity: 1;
+   transition: 0.1s;
+   background-color: var(--almost-white);
+   width: 100%;
+   transition-property: tranform;
+}
+
+.navigation::after {
+   transition: 0.1s;
+}
+.navigation::before {
+   transition: 0.2s 0.2s;
+   transition-property: opacity;
+}
+.navigation .menu_close_icon {
+   align-self: flex-end;
+}
+/* ============================== ============================== ============================== */
+
+/* ============================== SideBar Accordion Css ============================== */
+.nav_primary {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   padding-block: 2rem 1rem;
+}
+
+.accordion_button {
+   position: relative;
+   width: 100%;
+   justify-self: flex-start;
+   text-align: start;
+   padding: 0;
+}
+:is(.list_item, .accordion_button, .accordion_item p):hover {
+   color: var(--almost-black);
+}
+.accordion_button::after {
+   content: url("./images/icon-arrow-down.svg");
+   position: absolute;
+   top: 50%;
+   transform: translateY(-60%);
+   padding-left: 1rem;
+
+   transition: var(--transition-short);
+}
+.accordion_button.active::after {
+   transform: rotateX(0.5turn) translateY(35%);
+}
+
+.accordion_content {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+   max-height: 0;
+   opacity: 0;
+   visibility: hidden;
+
+   white-space: nowrap;
+   transition: var(--transition-short);
+}
+
+.accordion_item {
+   display: flex;
+   align-items: center;
+   justify-self: flex-start;
+   gap: 1rem;
+
+   cursor: pointer;
+   padding-inline: 1.5rem 0rem;
+}
+.navigation .accordion_item img {
+   width: 1rem;
+}
+
+.navigation .accordion_item:first-of-type {
+   padding-top: 1.5rem;
+}
+.navigation .accordion_item:last-of-type {
+   padding-bottom: 0.5rem;
+}
+
+.nav_secondary {
+   display: flex;
+   flex-direction: column;
+   align-self: stretch;
+   gap: 0.25rem;
+}
+/* ============================== ============================== ============================== */
+
+/* ============================== Main / Hero Section ============================== */
+
+.hero {
+   display: grid;
+   max-width: 875px;
+   overflow: hidden;
+}
+
+.hero_image {
+   object-fit: contain;
+   width: 100%;
+}
+
+.hero_content {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   padding: 0rem 1rem;
+}
+
+.hero_content .hero_heading {
+   font-size: 2.125rem;
+   font-weight: var(--fnw-bold);
+   color: var(--almost-black);
+
+   padding: 1.75rem 0 0;
+}
+
+.hero_subtext {
+   padding: 0.75rem 0 1.25rem;
+   line-height: 1.5;
+}
+
+button {
+   border: none;
+   background-color: transparent;
+   border-radius: 16px;
+
+   padding: 0.625rem 1rem;
+   cursor: pointer;
+
+   transition: var(--transition-short);
+}
+button.button_inverted {
+   border: 2px solid var(--medium-grey);
+}
+button.button_inverted:hover {
+   border: 2px solid var(--almost-black);
+   color: var(--almost-black);
+}
+button.button_filled {
+   border: 2px solid var(--almost-black);
+   background-color: var(--almost-black);
+   color: var(--almost-white);
+   font-weight: var(--fnw-bold);
+}
+button.button_filled:hover {
+   border: 2px solid var(--almost-black);
+   background-color: var(--almost-white);
+   color: var(--almost-black);
+}
+
+.clients {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 1.5rem;
+   padding: 2rem 0 1rem;
+}
+
+.client_image {
+   width: 100%;
+   object-fit: contain;
+}
+
+.menu_close_icon,
+.menu_icon,
+.list_item,
+.logo {
+   cursor: pointer;
+}
+
+/* ============================== ============================== ============================== */
+
+/* ============================== Media Qerries ============================== */
+
+@media screen and (min-width: 768px) {
+   /* Hide menu and close icons */
+   .menu_close_icon,
+   .menu_icon {
+      display: none;
+   }
+
+   header {
+      justify-content: start;
+      align-items: center;
+      gap: 3rem;
+      padding-inline: 2rem;
+   }
+   .navigation {
+      position: static;
+      flex-direction: row;
+      justify-content: baseline;
+      align-items: center;
+      width: 100%;
+
+      transform: translateX(0);
+      background-color: transparent;
+      padding: 0;
+   }
+   .navigation :is(.nav_primary, .nav_secondary) {
+      flex-direction: row;
+      align-items: center;
+      padding: 0;
+   }
+   .nav_primary {
+      flex: 1;
+      gap: 3rem;
+   }
+
+   .list_item,
+   .list_item button {
+      font-size: 14px;
+   }
+
+   .accordion_button,
+   .list_item:not(button) {
+      padding: 0;
+   }
+
+   .accordion_button::after {
+      padding-left: 0.375rem;
+   }
+
+   .accordion {
+      position: relative;
+   }
+   .accordion * {
+      padding: 0 !important;
+   }
+   .accordion_content {
+      position: absolute;
+      background-color: var(--almost-white);
+      box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.2);
+      top: calc(100% + 0.875rem);
+      right: -1rem;
+      border-radius: 0.5rem;
+
+      padding: 1.25rem !important;
+      gap: 1rem;
+
+      max-height: none !important;
+
+      transition: var(--transition-short);
+      transition-property: opacity;
+   }
+
+   .accordion_content.left_aligned {
+      left: 0;
+      width: fit-content;
+   }
+
+   .nav_text {
+      font-size: 16px;
+   }
+   .accordion_item img {
+      width: 0.875rem !important;
+   }
+}
+
+@media screen and (min-width: 840px) {
+   .hero {
+      grid-auto-flow: dense;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: flex-end;
+      min-width: 100%;
+      /* min-height: calc(100vh - 20rem); */
+      gap: 2rem;
+      padding-inline: var(--fluid-grid-space);
+   }
+
+   .hero_image_container {
+      padding: 0;
+      padding-left: var(--fluid-image-padding);
+      grid-column: 2;
+   }
+
+   .hero_content {
+      padding: 0;
+      align-items: flex-start;
+      text-align: start;
+      height: 100%;
+   }
+
+   .hero_content .hero_heading {
+      padding: 0;
+      font-size: var(--fluid-heading);
+      line-height: 1;
+
+      padding-top: var(--fluid-top-space);
+   }
+   .hero_content h1 .hero_heading {
+      white-space: nowrap;
+   }
+
+   .hero_subtext {
+      padding-block: var(--fluid-padding);
+      padding-right: var(--fluid-padding-right);
+      font-size: var(--fluid-subtext);
+   }
+
+   .button_filled {
+      padding-block: 0.75rem;
+      border-radius: 0.75rem;
+      /* margin-top: .5rem; */
+   }
+
+   .clients {
+      margin-top: auto;
+      padding: 0;
+      padding-top: 5rem;
+   }
+
+   .attribution {
+      padding-bottom: 1rem;
+   }
+}
