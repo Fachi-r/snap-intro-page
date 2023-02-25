@@ -17,7 +17,6 @@
    --fluid-padding-right: clamp(0.75rem, calc(-4.15rem + 9.33vw), 4.25rem);
    --fluid-top-space: clamp(6rem, calc(1rem + 10vw), 10rem);
    --fluid-image-padding: clamp(1rem, calc(-11.31rem + 19.23vw), 6rem);
-   /* --fluid-image-padding: clamp(2rem, calc(-0.8rem + 5.33vw), 4rem); */
 }
 
 *,
