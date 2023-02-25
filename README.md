@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
--  Solution URL: [Github](https://github.com/Fachi-r/snap-intro-page)
--  Live Site URL: [Add live site URL here](https://fachi-r.github.io/snap-intro-page/)
+-  Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/responsive-landing-page-using-css-and-javascript-o3glWGpVDE)
+-  Live Site URL: [Github Pages](https://fachi-r.github.io/snap-intro-page/)
 
 ## My process
 
